@@ -19,6 +19,9 @@
   "homepage": "https://github.com/Tgegoski/H17_Workout_Tracker#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.6.6",
+    "mongodb-atlas-api-client": "^2.16.0",
     "mongoose": "^5.12.9",
     "morgan": "^1.10.0"
   }
