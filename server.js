@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-const db = require("./models");
-const Workout = require("./workoutModel.js");
+const db = require('./models');
+const Workout = require('./models/workout.js');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
-const { db } = require("../models/workoutModel.js");
+const { db } = require("../models/workout.js");
 
-const apiRoutes = require('./api');
+const apiRoutes = require('./api-routes');
 const htmlRoutes = require('./html-routes.js');
 
 router.use('/', htmlRoutes);
@@ -19,7 +19,7 @@ router.post("/api/workout", ({ body }, res) => {
     });
 });
 
-router.get("/api/workouts", (req, res) => {
+router.get("/api/workout", (req, res) => {
   db.workout.aggregate( [
     { 
         $addFields: {
@@ -43,7 +43,7 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.put("/api/workouts/:id", (req, res) => {
+router.put("/api/workout/:id", (req, res) => {
     dbWorkout.findOneAndUpdate(
       {
          _id: req.params.id
@@ -67,18 +67,18 @@ router.put("/api/workouts/:id", (req, res) => {
     })
 })
 
-router.get("/api/workouts/range", (req, res) => {
+router.get("/api/workout/range", (req, res) => {
   dbWorkout.find({})
   db.workout.aggregate( [
     { 
         $addFields: {
-            totalWorkout: { $sum: "$workouts" },
+            totalWorkout: { $sum: "$workout" },
             totalInRange: { $sum: "$inRange" }
         }
     },
     {
         $addFields: { totalInRange: 
-            { $add: ["$totalWorkouts","$totalInRange"] }}
+            { $add: ["$totalWorkout","$totalInRange"] }}
     }
   ])
 }
