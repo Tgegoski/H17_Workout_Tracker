@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
-const { db } = require("../models/workout.js");
+const { db } = require("../models");
 
 const apiRoutes = require('./api-routes');
 const htmlRoutes = require('./html-routes.js');
