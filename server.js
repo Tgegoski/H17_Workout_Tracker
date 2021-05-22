@@ -5,8 +5,6 @@ const logger = require("morgan");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-const db = require("./models");
-const Workout = require("./models/workout.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,7 +21,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
 });
 
 // routes
-app.use(require("./public/api.js"));
 app.use(require("./routes/apiRoutes.js"));
 app.use(require("./routes/htmlRoutes.js"));
 
