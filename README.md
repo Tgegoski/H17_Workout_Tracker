@@ -32,5 +32,7 @@ The user should be able to:
 ## Demo
 
 See the link below to view my GitHub repository:
+https://github.com/Tgegoski/H17_Workout_Tracker.git
 
 See the link below to view my deployed application:
+https://shrouded-garden-44902.herokuapp.com/
