@@ -1,17 +1,10 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
-// const mongoose = require("mongoose");
-
-// const apiRoutes = require('./api-routes');
-// const htmlRoutes = require('./html-routes.js');
-
-// router.use('/', htmlRoutes);
-// router.use('/api', apiRoutes);
 
 router.post("/api/workout", ({ body }, res) => {
   Workout.create(body)
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((Workout) => {
+      res.json(Workout);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -37,8 +30,8 @@ router.get("/api/workout", (req, res) => {
 
   Workout.find({})
     .sort({ date: -1 })
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((Workout) => {
+      res.json(Workout);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -63,8 +56,8 @@ router.put("/api/workout/:id", (req, res) => {
         new: true,
       }
     )
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((Workout) => {
+      res.json(Workout);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -87,8 +80,8 @@ router.get("/api/workout/range", (req, res) => {
   ])
     .sort({ id: 1, day: 1 })
     .limit(7)
-    .then((dbWorkouts) => {
-      res.json(dbWorkouts);
+    .then((Workouts) => {
+      res.json(Workouts);
     })
     .catch((err) => {
       res.status(400).json(err);
