@@ -42,7 +42,7 @@ router.put("/api/workout/:id", (req, res) => {
           totalDuration: req.body.totalDuration,
         },
         $push: {
-          workouts: req.body,
+          exercises: req.body,
         },
       },
       {
@@ -58,18 +58,14 @@ router.put("/api/workout/:id", (req, res) => {
 });
 
 router.get("/api/workout/range", (req, res) => {
+  Workout.find({})
   Workout.aggregate([
     {
       $addFields: {
-        totalWorkout: { $sum: "$workout" },
-        totalInRange: { $sum: "$inRange" },
-      },
+        totalDuration: { $sum: "$exercises.duration" },
+      }
     },
-    {
-      $addFields: {
-        totalInRange: { $add: ["$totalWorkout", "$totalInRange"] },
-      },
-    },
+          
   ])
     .sort({ id: 1, day: 1 })
     .limit(7)
